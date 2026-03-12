@@ -187,6 +187,9 @@ export default function DevopsTerminalPortfolio() {
             <div>
               Email: <a style={{color:"#4ade80"}} href="mailto:gennady.davidov@gmail.com">gennady.davidov@gmail.com</a>
             </div>
+            <div>
+              WhatsApp: <a style={{color:"#4ade80"}} href="https://wa.me/9726325557">+972 63 255 57</a>
+            </div>
           </div>
         </section>
 
