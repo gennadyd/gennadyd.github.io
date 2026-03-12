@@ -1,34 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 const SECTIONS = ["about", "skills", "experience", "blog", "contact"];
 
 export default function DevopsTerminalPortfolio() {
   const [collapsed, setCollapsed] = useState(
-    Object.fromEntries(SECTIONS.filter((s) => s !== "about").map((s) => [s, true]))
+    Object.fromEntries(SECTIONS.filter((s) => s !== "about" && s !== "skills").map((s) => [s, true]))
   );
 
   const toggle = (id) =>
     setCollapsed((prev) => ({ ...prev, [id]: !prev[id] }));
-
-  const collapsedBeforePrint = useRef(null);
-  useEffect(() => {
-    const beforePrint = () => {
-      collapsedBeforePrint.current = collapsed;
-      setCollapsed({});
-    };
-    const afterPrint = () => {
-      if (collapsedBeforePrint.current !== null) {
-        setCollapsed(collapsedBeforePrint.current);
-        collapsedBeforePrint.current = null;
-      }
-    };
-    window.addEventListener("beforeprint", beforePrint);
-    window.addEventListener("afterprint", afterPrint);
-    return () => {
-      window.removeEventListener("beforeprint", beforePrint);
-      window.removeEventListener("afterprint", afterPrint);
-    };
-  });
 
   const skills = [
     "Kubernetes",
@@ -144,9 +124,9 @@ export default function DevopsTerminalPortfolio() {
           }}
         >
           <span>{title}</span>
-          <span style={{ fontSize: 11, opacity: 0.7 }}>{open ? "[-]" : "[+]"}</span>
+          <span className="section-toggle" style={{ fontSize: 11, opacity: 0.7 }}>{open ? "[-]" : "[+]"}</span>
         </div>
-        {open && <div>{children}</div>}
+        <div className="section-body" style={{ display: open ? "block" : "none" }}>{children}</div>
       </div>
     );
   };
@@ -159,6 +139,14 @@ export default function DevopsTerminalPortfolio() {
   };
 
   return (
+    <>
+    <style>{`
+      @media print {
+        .section-body { display: block !important; }
+        .section-toggle { display: none !important; }
+        button { display: none !important; }
+      }
+    `}</style>
     <div style={{
       minHeight: "100vh",
       background: "#0d1117",
@@ -193,14 +181,15 @@ export default function DevopsTerminalPortfolio() {
             <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#28c840", display: "inline-block", flexShrink: 0 }} />
             <span style={{ color: "#8b949e", fontSize: 13, marginLeft: 4, marginRight: 16, flexShrink: 0 }}>gennady@portfolio: ~</span>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              {SECTIONS.map((s) => (
-                <a
-                  key={s}
-                  href={`#${s}`}
-                  onClick={(e) => { e.preventDefault(); scrollTo(s); }}
-                  style={{ color: "#4ade80", fontSize: 12, textDecoration: "none", opacity: 0.85 }}
-                >
-                  {s.charAt(0).toUpperCase() + s.slice(1)}
+              {[
+                { label: "LinkedIn", href: "https://www.linkedin.com/in/gennadyd/" },
+                { label: "GitHub", href: "https://github.com/gennadyd" },
+                { label: "Email", href: "mailto:gennady.davidov@gmail.com" },
+                { label: "WhatsApp", href: "https://wa.me/9726325557" },
+              ].map(({ label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer"
+                  style={{ color: "#4ade80", fontSize: 12, textDecoration: "none", opacity: 0.85 }}>
+                  {label}
                 </a>
               ))}
             </div>
@@ -276,5 +265,6 @@ export default function DevopsTerminalPortfolio() {
         </div>
       </div>
     </div>
+    </>
   );
 }
