@@ -125,7 +125,7 @@ export default function DevopsTerminalPortfolio() {
 
         <section style={{marginBottom:35}}>
           <h2 style={{color:"#4ade80",marginBottom:10}}>Skills</h2>
-          <ul style={{lineHeight:1.8}}>
+          <ul style={{lineHeight:1.8,listStyle:"none",paddingLeft:0}}>
             {skills.map((s) => (
               <li key={s}>• {s}</li>
             ))}
@@ -135,7 +135,7 @@ export default function DevopsTerminalPortfolio() {
         <section style={{marginBottom:35}}>
           <h2 style={{color:"#4ade80",marginBottom:15}}>Experience</h2>
 
-          <div style={{display:"grid",gap:18,gridTemplateColumns:"repeat(auto-fit,minmax(320px,1fr))"}}>
+          <div style={{display:"flex",flexDirection:"column",gap:18}}>
 
           {experience.map((job) => (
             <div key={job.company} style={{
@@ -153,7 +153,7 @@ export default function DevopsTerminalPortfolio() {
                 {job.role} ({job.period})
               </div>
 
-              <ul style={{fontSize:14,lineHeight:1.7}}>
+              <ul style={{fontSize:14,lineHeight:1.7,listStyle:"none",paddingLeft:0}}>
                 {job.points.map((p, i) => (
                   <li key={i}>• {p}</li>
                 ))}
@@ -168,7 +168,7 @@ export default function DevopsTerminalPortfolio() {
 
         <section style={{marginBottom:35}}>
           <h2 style={{color:"#4ade80",marginBottom:10}}>Blog</h2>
-          <ul style={{lineHeight:1.8}}>
+          <ul style={{lineHeight:1.8,listStyle:"none",paddingLeft:0}}>
             {blog.map((post) => (
               <li key={post}>• {post}</li>
             ))}
