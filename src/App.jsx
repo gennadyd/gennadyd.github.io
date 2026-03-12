@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const SECTIONS = ["about", "skills", "experience", "blog", "contact"];
 
@@ -9,6 +9,26 @@ export default function DevopsTerminalPortfolio() {
 
   const toggle = (id) =>
     setCollapsed((prev) => ({ ...prev, [id]: !prev[id] }));
+
+  const collapsedBeforePrint = useRef(null);
+  useEffect(() => {
+    const beforePrint = () => {
+      collapsedBeforePrint.current = collapsed;
+      setCollapsed({});
+    };
+    const afterPrint = () => {
+      if (collapsedBeforePrint.current !== null) {
+        setCollapsed(collapsedBeforePrint.current);
+        collapsedBeforePrint.current = null;
+      }
+    };
+    window.addEventListener("beforeprint", beforePrint);
+    window.addEventListener("afterprint", afterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", beforePrint);
+      window.removeEventListener("afterprint", afterPrint);
+    };
+  });
 
   const skills = [
     "Kubernetes",
