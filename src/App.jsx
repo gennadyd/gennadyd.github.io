@@ -33,10 +33,10 @@ export default function DevopsTerminalPortfolio() {
       period: "2018–2020",
       points: [
         "Built CI/CD platform from scratch using Jenkins, Bitbucket and Ansible",
-        "Implemented Git‑flow integrated with CI",
+        "Implemented Git-flow integrated with CI",
         "Docker containerization",
         "Monitoring stack (Grafana, ELK, Nagios)",
-        "Proposed and implemented platform improvements and automation ideas across the engineering environment"
+        "Proposed and implemented platform improvements and automation ideas"
       ]
     },
     {
@@ -56,22 +56,22 @@ export default function DevopsTerminalPortfolio() {
       period: "2016–2018",
       points: [
         "Maintained CI/CD pipelines for Java and Python microservices",
-        "Infrastructure automation and environment configuration using Ansible",
+        "Infrastructure automation using Ansible",
         "Built and deployed Docker containers across staging and production",
-        "Implemented monitoring and reporting with Grafana, ELK, New Relic and Graphite",
-        "Managed MySQL environments including replication, backups and monitoring",
+        "Implemented monitoring with Grafana, ELK, New Relic and Graphite",
+        "Managed MySQL environments including replication and backups",
         "Operated Linux infrastructure and load balancers"
       ]
     },
     {
-      company: "Head‑On Computer Systems",
+      company: "Head-On Computer Systems",
       role: "Senior Monitoring Solution Engineer",
       period: "2005–2016",
       points: [
-        "Designed and implemented end‑to‑end monitoring solutions for enterprise customers",
+        "Designed end-to-end monitoring solutions for enterprise customers",
         "Implemented IBM Tivoli Netcool monitoring platforms",
-        "Integrated production systems, applications and infrastructure into monitoring",
-        "Analyzed event flows and monitoring architecture across complex environments"
+        "Integrated production systems and infrastructure into monitoring",
+        "Analyzed event flows and monitoring architecture"
       ]
     },
     {
@@ -91,110 +91,110 @@ export default function DevopsTerminalPortfolio() {
     "Automated VM Image Pipeline with Packer and Ansible"
   ];
 
+  const Section = ({ title, children }) => (
+    <div style={{ marginBottom: 32 }}>
+      <div style={{
+        color: "#4ade80",
+        fontWeight: "bold",
+        fontSize: 13,
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+        marginBottom: 12,
+        borderBottom: "1px solid #1f2937",
+        paddingBottom: 6
+      }}>
+        {title}
+      </div>
+      {children}
+    </div>
+  );
+
   return (
     <div style={{
       minHeight: "100vh",
-      background: "#0a0a0a",
-      color: "#e2e8f0",
-      fontFamily: "monospace",
+      background: "#0d1117",
       display: "flex",
       justifyContent: "center",
-      padding: "40px 20px"
+      alignItems: "flex-start",
+      padding: "40px 20px",
+      fontFamily: "'Courier New', Courier, monospace"
     }}>
+      <div style={{ width: "100%", maxWidth: "860px" }}>
 
-      <div style={{width:"100%",maxWidth:"900px"}}>
+        <div style={{
+          background: "#161b22",
+          borderRadius: 10,
+          border: "1px solid #30363d",
+          overflow: "hidden",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.6)"
+        }}>
 
-        <header style={{marginBottom:40}}>
-          <h1 style={{color:"#4ade80",fontSize:32,fontWeight:"bold"}}>Gennady Davidov</h1>
-          <div style={{marginTop:10,fontSize:18}}>
-            Senior DevOps / Platform Engineer
-          </div>
-          <div style={{color:"#4ade80",marginTop:6}}>
-            Kubernetes • GitOps • CI/CD • Automation • Observability
-          </div>
-        </header>
-
-        <section style={{marginBottom:35}}>
-          <h2 style={{color:"#4ade80",marginBottom:10}}>About</h2>
-          <p>
-            Senior DevOps / Platform Engineer with 20+ years of experience in infrastructure,
-            monitoring and DevOps engineering. Currently working at Intel (Habana Labs)
-            focusing on Kubernetes operations, CI/CD platforms and infrastructure automation.
-          </p>
-        </section>
-
-        <section style={{marginBottom:35}}>
-          <h2 style={{color:"#4ade80",marginBottom:10}}>Skills</h2>
-          <ul style={{lineHeight:1.8,listStyle:"none",paddingLeft:0}}>
-            {skills.map((s) => (
-              <li key={s}>• {s}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section style={{marginBottom:35}}>
-          <h2 style={{color:"#4ade80",marginBottom:15}}>Experience</h2>
-
-          <div style={{display:"flex",flexDirection:"column",gap:18}}>
-
-          {experience.map((job) => (
-            <div key={job.company} style={{
-              background:"#111827",
-              border:"1px solid #1f2937",
-              borderRadius:10,
-              padding:18
-            }}>
-
-              <div style={{color:"#4ade80",fontWeight:"bold"}}>
-                {job.company}
-              </div>
-
-              <div style={{color:"#9ca3af",fontSize:14,marginBottom:10}}>
-                {job.role} ({job.period})
-              </div>
-
-              <ul style={{fontSize:14,lineHeight:1.7,listStyle:"none",paddingLeft:0}}>
-                {job.points.map((p, i) => (
-                  <li key={i}>• {p}</li>
-                ))}
-              </ul>
-
-            </div>
-          ))}
-
+          {/* Title bar */}
+          <div style={{
+            background: "#21262d",
+            padding: "10px 16px",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            borderBottom: "1px solid #30363d"
+          }}>
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#ff5f57", display: "inline-block" }} />
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#febc2e", display: "inline-block" }} />
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#28c840", display: "inline-block" }} />
+            <span style={{ color: "#8b949e", fontSize: 13, marginLeft: 12 }}>gennady@portfolio: ~</span>
           </div>
 
-        </section>
+          {/* Content */}
+          <div style={{ padding: "28px 32px", fontSize: 14, color: "#cbd5e1", lineHeight: 1.8 }}>
 
-        <section style={{marginBottom:35}}>
-          <h2 style={{color:"#4ade80",marginBottom:10}}>Blog</h2>
-          <ul style={{lineHeight:1.8,listStyle:"none",paddingLeft:0}}>
-            {blog.map((post) => (
-              <li key={post}>• {post}</li>
-            ))}
-          </ul>
-        </section>
+            <div style={{ marginBottom: 32 }}>
+              <div style={{ color: "#4ade80", fontWeight: "bold", fontSize: 22 }}>Gennady Davidov</div>
+              <div style={{ marginTop: 4 }}>Senior DevOps / Platform Engineer</div>
+              <div style={{ color: "#64748b", marginTop: 4 }}>Kubernetes • GitOps • CI/CD • Automation • Observability</div>
+            </div>
 
-        <section>
-          <h2 style={{color:"#4ade80",marginBottom:10}}>Contact</h2>
-          <div style={{lineHeight:1.8}}>
-            <div>
-              LinkedIn: <a style={{color:"#4ade80"}} href="https://www.linkedin.com/in/gennadyd/">linkedin.com/in/gennadyd</a>
-            </div>
-            <div>
-              GitHub: <a style={{color:"#4ade80"}} href="https://github.com/gennadyd">github.com/gennadyd</a>
-            </div>
-            <div>
-              Email: <a style={{color:"#4ade80"}} href="mailto:gennady.davidov@gmail.com">gennady.davidov@gmail.com</a>
-            </div>
-            <div>
-              WhatsApp: <a style={{color:"#4ade80"}} href="https://wa.me/9726325557">+972 63 255 57</a>
-            </div>
+            <Section title="About">
+              Senior DevOps / Platform Engineer with 20+ years of experience in infrastructure,
+              monitoring and DevOps engineering. Currently working at Intel (Habana Labs)
+              focusing on Kubernetes operations, CI/CD platforms and infrastructure automation.
+            </Section>
+
+            <Section title="Skills">
+              {skills.map((s, i) => (
+                <div key={i}>• {s}</div>
+              ))}
+            </Section>
+
+            <Section title="Experience">
+              {experience.map((job) => (
+                <div key={job.company} style={{ marginBottom: 20 }}>
+                  <div>
+                    <span style={{ color: "#4ade80", fontWeight: "bold" }}>{job.company}</span>
+                    <span style={{ color: "#64748b" }}> — {job.role} ({job.period})</span>
+                  </div>
+                  {job.points.map((p, i) => (
+                    <div key={i} style={{ paddingLeft: 16 }}>• {p}</div>
+                  ))}
+                </div>
+              ))}
+            </Section>
+
+            <Section title="Blog">
+              {blog.map((post, i) => (
+                <div key={i}>• {post}</div>
+              ))}
+            </Section>
+
+            <Section title="Contact">
+              <div>LinkedIn:  <a style={{ color: "#4ade80" }} href="https://www.linkedin.com/in/gennadyd/">linkedin.com/in/gennadyd</a></div>
+              <div>GitHub:    <a style={{ color: "#4ade80" }} href="https://github.com/gennadyd">github.com/gennadyd</a></div>
+              <div>Email:     <a style={{ color: "#4ade80" }} href="mailto:gennady.davidov@gmail.com">gennady.davidov@gmail.com</a></div>
+              <div>WhatsApp:  <a style={{ color: "#4ade80" }} href="https://wa.me/9726325557">+972 63 255 57</a></div>
+            </Section>
+
           </div>
-        </section>
-
+        </div>
       </div>
-
     </div>
   );
 }
