@@ -186,10 +186,12 @@ export default function DevopsTerminalPortfolio() {
             </Section>
 
             <Section title="Contact">
-              <div>LinkedIn:  <a style={{ color: "#4ade80" }} href="https://www.linkedin.com/in/gennadyd/">linkedin.com/in/gennadyd</a></div>
-              <div>GitHub:    <a style={{ color: "#4ade80" }} href="https://github.com/gennadyd">github.com/gennadyd</a></div>
-              <div>Email:     <a style={{ color: "#4ade80" }} href="mailto:gennady.davidov@gmail.com">gennady.davidov@gmail.com</a></div>
-              <div>WhatsApp:  <a style={{ color: "#4ade80" }} href="https://wa.me/9726325557">+972 63 255 57</a></div>
+              <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+                <a style={{ color: "#4ade80" }} href="https://www.linkedin.com/in/gennadyd/">LinkedIn</a>
+                <a style={{ color: "#4ade80" }} href="https://github.com/gennadyd">GitHub</a>
+                <a style={{ color: "#4ade80" }} href="mailto:gennady.davidov@gmail.com">Email</a>
+                <a style={{ color: "#4ade80" }} href="https://wa.me/9726325557">WhatsApp</a>
+              </div>
             </Section>
 
           </div>
