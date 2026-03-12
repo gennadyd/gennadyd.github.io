@@ -3,7 +3,9 @@ import { useState } from "react";
 const SECTIONS = ["about", "skills", "experience", "blog", "contact"];
 
 export default function DevopsTerminalPortfolio() {
-  const [collapsed, setCollapsed] = useState({});
+  const [collapsed, setCollapsed] = useState(
+    Object.fromEntries(SECTIONS.filter((s) => s !== "about").map((s) => [s, true]))
+  );
 
   const toggle = (id) =>
     setCollapsed((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -182,6 +184,22 @@ export default function DevopsTerminalPortfolio() {
                 </a>
               ))}
             </div>
+            <button
+              onClick={() => window.print()}
+              style={{
+                marginLeft: "auto",
+                background: "transparent",
+                border: "1px solid #30363d",
+                color: "#4ade80",
+                fontSize: 11,
+                padding: "3px 10px",
+                borderRadius: 4,
+                cursor: "pointer",
+                flexShrink: 0,
+              }}
+            >
+              ↓ PDF
+            </button>
           </div>
 
           {/* Content */}
