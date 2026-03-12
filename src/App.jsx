@@ -1,4 +1,12 @@
+import { useState } from "react";
+
+const SECTIONS = ["about", "skills", "experience", "blog", "contact"];
+
 export default function DevopsTerminalPortfolio() {
+  const [collapsed, setCollapsed] = useState({});
+
+  const toggle = (id) =>
+    setCollapsed((prev) => ({ ...prev, [id]: !prev[id] }));
 
   const skills = [
     "Kubernetes",
@@ -17,7 +25,7 @@ export default function DevopsTerminalPortfolio() {
     {
       company: "Intel / Habana Labs",
       role: "Senior DevOps Engineer",
-      period: "2020–Present",
+      period: "2020-Present",
       points: [
         "Kubernetes operations with KubeVirt",
         "Led release management and environment provisioning",
@@ -30,7 +38,7 @@ export default function DevopsTerminalPortfolio() {
     {
       company: "Verint",
       role: "DevOps Tech Lead",
-      period: "2018–2020",
+      period: "2018-2020",
       points: [
         "Built CI/CD platform from scratch using Jenkins, Bitbucket and Ansible",
         "Implemented Git-flow integrated with CI",
@@ -53,7 +61,7 @@ export default function DevopsTerminalPortfolio() {
     {
       company: "SolarEdge",
       role: "DevOps Engineer",
-      period: "2016–2018",
+      period: "2016-2018",
       points: [
         "Maintained CI/CD pipelines for Java and Python microservices",
         "Infrastructure automation using Ansible",
@@ -66,7 +74,7 @@ export default function DevopsTerminalPortfolio() {
     {
       company: "Head-On Computer Systems",
       role: "Senior Monitoring Solution Engineer",
-      period: "2005–2016",
+      period: "2005-2016",
       points: [
         "Designed end-to-end monitoring solutions for enterprise customers",
         "Implemented IBM Tivoli Netcool monitoring platforms",
@@ -77,7 +85,7 @@ export default function DevopsTerminalPortfolio() {
     {
       company: "Ness",
       role: "Monitoring Solution Engineer",
-      period: "2001–2005",
+      period: "2001-2005",
       points: [
         "Implemented enterprise monitoring solutions",
         "Designed automated issue detection and alerting",
@@ -91,23 +99,42 @@ export default function DevopsTerminalPortfolio() {
     "Automated VM Image Pipeline with Packer and Ansible"
   ];
 
-  const Section = ({ title, children }) => (
-    <div style={{ marginBottom: 32 }}>
-      <div style={{
-        color: "#4ade80",
-        fontWeight: "bold",
-        fontSize: 13,
-        letterSpacing: "0.1em",
-        textTransform: "uppercase",
-        marginBottom: 12,
-        borderBottom: "1px solid #1f2937",
-        paddingBottom: 6
-      }}>
-        {title}
+  const Section = ({ id, title, children }) => {
+    const open = !collapsed[id];
+    return (
+      <div id={id} style={{ marginBottom: 28 }}>
+        <div
+          onClick={() => toggle(id)}
+          style={{
+            color: "#4ade80",
+            fontWeight: "bold",
+            fontSize: 13,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginBottom: open ? 12 : 0,
+            borderBottom: "1px solid #1f2937",
+            paddingBottom: 6,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            cursor: "pointer",
+            userSelect: "none"
+          }}
+        >
+          <span>{title}</span>
+          <span style={{ fontSize: 11, opacity: 0.7 }}>{open ? "[-]" : "[+]"}</span>
+        </div>
+        {open && <div>{children}</div>}
       </div>
-      {children}
-    </div>
-  );
+    );
+  };
+
+  const scrollTo = (id) => {
+    setCollapsed((prev) => ({ ...prev, [id]: false }));
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
 
   return (
     <div style={{
@@ -136,12 +163,25 @@ export default function DevopsTerminalPortfolio() {
             display: "flex",
             alignItems: "center",
             gap: 8,
-            borderBottom: "1px solid #30363d"
+            borderBottom: "1px solid #30363d",
+            flexWrap: "wrap"
           }}>
-            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#ff5f57", display: "inline-block" }} />
-            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#febc2e", display: "inline-block" }} />
-            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#28c840", display: "inline-block" }} />
-            <span style={{ color: "#8b949e", fontSize: 13, marginLeft: 12 }}>gennady@portfolio: ~</span>
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#ff5f57", display: "inline-block", flexShrink: 0 }} />
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#febc2e", display: "inline-block", flexShrink: 0 }} />
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#28c840", display: "inline-block", flexShrink: 0 }} />
+            <span style={{ color: "#8b949e", fontSize: 13, marginLeft: 4, marginRight: 16, flexShrink: 0 }}>gennady@portfolio: ~</span>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              {SECTIONS.map((s) => (
+                <a
+                  key={s}
+                  href={`#${s}`}
+                  onClick={(e) => { e.preventDefault(); scrollTo(s); }}
+                  style={{ color: "#4ade80", fontSize: 12, textDecoration: "none", opacity: 0.85 }}
+                >
+                  {s.charAt(0).toUpperCase() + s.slice(1)}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Content */}
@@ -153,19 +193,19 @@ export default function DevopsTerminalPortfolio() {
               <div style={{ color: "#64748b", marginTop: 4 }}>Kubernetes • GitOps • CI/CD • Automation • Observability</div>
             </div>
 
-            <Section title="About">
+            <Section id="about" title="About">
               Senior DevOps / Platform Engineer with 20+ years of experience in infrastructure,
               monitoring and DevOps engineering. Currently working at Intel (Habana Labs)
               focusing on Kubernetes operations, CI/CD platforms and infrastructure automation.
             </Section>
 
-            <Section title="Skills">
+            <Section id="skills" title="Skills">
               {skills.map((s, i) => (
                 <div key={i}>• {s}</div>
               ))}
             </Section>
 
-            <Section title="Experience">
+            <Section id="experience" title="Experience">
               {experience.map((job) => (
                 <div key={job.company} style={{ marginBottom: 20 }}>
                   <div>
@@ -179,13 +219,13 @@ export default function DevopsTerminalPortfolio() {
               ))}
             </Section>
 
-            <Section title="Blog">
+            <Section id="blog" title="Blog">
               {blog.map((post, i) => (
                 <div key={i}>• {post}</div>
               ))}
             </Section>
 
-            <Section title="Contact">
+            <Section id="contact" title="Contact">
               <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
                 <a style={{ color: "#4ade80" }} href="https://www.linkedin.com/in/gennadyd/">LinkedIn</a>
                 <a style={{ color: "#4ade80" }} href="https://github.com/gennadyd">GitHub</a>
