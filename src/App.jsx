@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SECTIONS = ["about", "skills", "experience", "blog", "contact"];
+const SECTIONS = ["about", "skills", "experience", "blog"];
 
 export default function DevopsTerminalPortfolio() {
   const [collapsed, setCollapsed] = useState(
@@ -252,14 +252,7 @@ export default function DevopsTerminalPortfolio() {
               ))}
             </Section>
 
-            <Section id="contact" title="Contact">
-              <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                <a style={{ color: "#4ade80" }} href="https://www.linkedin.com/in/gennadyd/">LinkedIn</a>
-                <a style={{ color: "#4ade80" }} href="https://github.com/gennadyd">GitHub</a>
-                <a style={{ color: "#4ade80" }} href="mailto:gennady.davidov@gmail.com">Email</a>
-                <a style={{ color: "#4ade80" }} href="https://wa.me/9726325557">WhatsApp</a>
-              </div>
-            </Section>
+
 
           </div>
         </div>
