@@ -1,173 +1,188 @@
-import { useState } from "react";
-
 export default function DevopsTerminalPortfolio() {
-  const prompt = "gennady@master:~$";
 
-  const skills = `Kubernetes
-GitOps (FluxCD)
-CI/CD (Jenkins, Groovy)
-Infrastructure as Code (Terraform, Packer)
-AWS (EKS, EC2, AMIs)
-Docker / Containerization
-Automation (Ansible, AWX, Bash, Python)
-Monitoring & Observability (Prometheus, Grafana, ELK, Nagios, Zabbix)
-Linux / Systems`;
+  const skills = [
+    "Kubernetes",
+    "GitOps (FluxCD)",
+    "CI/CD (Jenkins, Groovy)",
+    "Infrastructure as Code (Terraform, Packer)",
+    "AWS (EKS, EC2, AMIs)",
+    "Docker / Containerization",
+    "Automation (Ansible, AWX)",
+    "Scripting (Bash, Python, Go)",
+    "Monitoring & Observability (Prometheus, Grafana, ELK, Nagios, Zabbix)",
+    "Linux / Systems"
+  ];
 
-  const experience = `Intel / Habana Labs — Senior DevOps Engineer (2020–Present)
-- Kubernetes operations with KubeVirt
-- Led release management and environment provisioning
-- Designed and maintained CI/CD pipelines using Jenkins and Groovy
-- AWS infrastructure automation (EKS, EC2, AMIs) using Terraform and Packer
-- Automated image pipelines using Vagrant and Packer
-- Implemented vulnerability scanning
-
-Verint — DevOps Tech Lead (2018–2020)
-- Built CI/CD platform from scratch using Jenkins, Bitbucket and Ansible
-- Implemented Git-flow integrated with CI
-- Docker containerization
-- Monitoring stack (Grafana, ELK, Nagios)
-
-SolarEdge — DevOps Engineer (2017–2018)
-- CI/CD pipelines for Java and Python microservices
-- Automation using Ansible
-- Docker deployments
-- Monitoring (Grafana, ELK, New Relic, Graphite)`;
-
-  const projects = `kubernetes-platform
-cicd-platform
-image-pipelines`;
-
-  const blog = `pci-passthrough-kvm-libvirt
-packer-ansible-vagrant-libvirt-infrastructure-labs`;
-
-  const help = `Available commands:
-whoami
-about
-skills
-experience
-projects
-blog
-contact
-clear`;
-
-  const contact = `LinkedIn: linkedin.com/in/gennadyd
-GitHub: github.com/gennadyd
-Email: gennady.davidov@gmail.com`;
-
-  const about = `Senior DevOps / Platform Engineer with 20+ years in infrastructure, monitoring and DevOps engineering.
-Currently working at Intel (Habana Labs) focusing on Kubernetes operations, CI/CD platforms, infrastructure automation and cloud environments.`;
-
-  const commands = {
-    whoami: "Senior DevOps / Platform Engineer\nKubernetes • GitOps • CI/CD • Automation • Observability",
-    about,
-    skills,
-    experience,
-    projects,
-    blog,
-    contact,
-    help
-  };
-
-  const [history, setHistory] = useState([
-    `${prompt} whoami`,
-    commands.whoami,
-    `${prompt} help`,
-    help
-  ]);
-
-  const [input, setInput] = useState("");
-
-  function runCommand(e) {
-    e.preventDefault();
-
-    const cmd = input.trim();
-
-    if (!cmd) return;
-
-    if (cmd === "clear") {
-      setHistory([]);
-      setInput("");
-      return;
+  const experience = [
+    {
+      company: "Intel / Habana Labs",
+      role: "Senior DevOps Engineer",
+      period: "2020–Present",
+      points: [
+        "Kubernetes operations with KubeVirt",
+        "Led release management and environment provisioning",
+        "Designed and maintained CI/CD pipelines using Jenkins and Groovy",
+        "AWS infrastructure automation using Terraform and Packer",
+        "Automated image pipelines using Vagrant and Packer",
+        "Implemented vulnerability scanning"
+      ]
+    },
+    {
+      company: "Verint",
+      role: "DevOps Tech Lead",
+      period: "2018–2020",
+      points: [
+        "Built CI/CD platform from scratch using Jenkins, Bitbucket and Ansible",
+        "Implemented Git‑flow integrated with CI",
+        "Docker containerization",
+        "Monitoring stack (Grafana, ELK, Nagios)",
+        "Proposed and implemented platform improvements and automation ideas across the engineering environment"
+      ]
+    },
+    {
+      company: "BlueVine",
+      role: "DevOps Engineer",
+      period: "2018",
+      points: [
+        "Managed AWS infrastructure (EC2, S3, RDS)",
+        "Optimized ELK & Zabbix monitoring stacks",
+        "Automated deployments using Chef",
+        "Migrated ELK to Elastic Cloud"
+      ]
+    },
+    {
+      company: "SolarEdge",
+      role: "DevOps Engineer",
+      period: "2016–2018",
+      points: [
+        "Maintained CI/CD pipelines for Java and Python microservices",
+        "Infrastructure automation and environment configuration using Ansible",
+        "Built and deployed Docker containers across staging and production",
+        "Implemented monitoring and reporting with Grafana, ELK, New Relic and Graphite",
+        "Managed MySQL environments including replication, backups and monitoring",
+        "Operated Linux infrastructure and load balancers"
+      ]
+    },
+    {
+      company: "Head‑On Computer Systems",
+      role: "Senior Monitoring Solution Engineer",
+      period: "2005–2016",
+      points: [
+        "Designed and implemented end‑to‑end monitoring solutions for enterprise customers",
+        "Implemented IBM Tivoli Netcool monitoring platforms",
+        "Integrated production systems, applications and infrastructure into monitoring",
+        "Analyzed event flows and monitoring architecture across complex environments"
+      ]
+    },
+    {
+      company: "Ness",
+      role: "Monitoring Solution Engineer",
+      period: "2001–2005",
+      points: [
+        "Implemented enterprise monitoring solutions",
+        "Designed automated issue detection and alerting",
+        "Maintained availability and performance monitoring systems"
+      ]
     }
+  ];
 
-    const output = commands[cmd] || `command not found: ${cmd}`;
-
-    setHistory((h) => [...h, `${prompt} ${cmd}`, output]);
-    setInput("");
-  }
+  const blog = [
+    "PCI Passthrough with KVM and Libvirt",
+    "Automated VM Image Pipeline with Packer and Ansible"
+  ];
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#0a0a0a",
-        color: "#22c55e",
-        fontFamily: "monospace",
-        display: "flex",
-        justifyContent: "center",
-        padding: "40px 20px"
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "1000px",
-          borderRadius: "16px",
-          border: "1px solid #1e293b",
-          background: "#111",
-          boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
-          overflow: "hidden"
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            background: "#1e293b",
-            padding: "12px 16px",
-            fontSize: "14px",
-            color: "#94a3b8"
-          }}
-        >
-          <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#ef4444" }} />
-          <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#f59e0b" }} />
-          <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#22c55e" }} />
-          <div style={{ marginLeft: 8 }}>gennady@master:~</div>
-        </div>
+    <div className="min-h-screen bg-[#0a0a0a] text-slate-200 font-mono flex justify-center px-6 py-12">
 
-        <div style={{ padding: "32px", lineHeight: 1.6 }}>
-          {history.map((line, i) => (
-            <div
-              key={i}
-              style={{
-                color: line.startsWith(prompt) ? "#4ade80" : "#cbd5e1",
-                whiteSpace: "pre-line"
-              }}
-            >
-              {line}
+      <div className="w-full max-w-4xl">
+
+        <header className="mb-12">
+          <h1 className="text-3xl text-green-400 font-bold">Gennady Davidov</h1>
+          <p className="mt-3 text-lg">
+            Senior DevOps / Platform Engineer
+          </p>
+          <p className="text-green-400 mt-2">
+            Kubernetes • GitOps • CI/CD • Automation • Observability
+          </p>
+        </header>
+
+
+        <section className="mb-10">
+          <h2 className="text-xl text-green-400 mb-3">About</h2>
+          <p>
+            Senior DevOps / Platform Engineer with 20+ years of experience in infrastructure,
+            monitoring and DevOps engineering. Currently working at Intel (Habana Labs)
+            focusing on Kubernetes operations, CI/CD platforms and infrastructure automation.
+          </p>
+        </section>
+
+
+        <section className="mb-10">
+          <h2 className="text-xl text-green-400 mb-3">Skills</h2>
+          <ul className="space-y-1">
+            {skills.map((s) => (
+              <li key={s}>• {s}</li>
+            ))}
+          </ul>
+        </section>
+
+
+        <section className="mb-10">
+          <h2 className="text-xl text-green-400 mb-4">Experience</h2>
+
+          <div className="grid gap-5 md:grid-cols-2">
+
+          {experience.map((job) => (
+            <div key={job.company} className="rounded-xl border border-slate-800 bg-[#111827] p-5">
+              <div className="text-green-400 font-semibold">
+                {job.company}
+              </div>
+              <div className="text-sm text-slate-400 mb-2">
+                {job.role} ({job.period})
+              </div>
+
+              <ul className="space-y-1 text-sm">
+                {job.points.map((p, i) => (
+                  <li key={i}>• {p}</li>
+                ))}
+              </ul>
             </div>
           ))}
 
-          <form onSubmit={runCommand} style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
-            <span style={{ color: "#4ade80" }}>{prompt}</span>
-            <input
-              autoFocus
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              style={{
-                flex: 1,
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                color: "#e2e8f0",
-                fontFamily: "monospace",
-                fontSize: "16px"
-              }}
-            />
-          </form>
-        </div>
+          </div>
+
+        </section>
+
+
+
+
+        <section className="mb-10">
+          <h2 className="text-xl text-green-400 mb-3">Blog</h2>
+          <ul className="space-y-1">
+            {blog.map((post) => (
+              <li key={post}>• {post}</li>
+            ))}
+          </ul>
+        </section>
+
+
+        <section>
+          <h2 className="text-xl text-green-400 mb-3">Contact</h2>
+          <div className="space-y-1">
+            <div>
+              LinkedIn: <a className="text-green-400" href="https://www.linkedin.com/in/gennadyd/">linkedin.com/in/gennadyd</a>
+            </div>
+            <div>
+              GitHub: <a className="text-green-400" href="https://github.com/gennadyd">github.com/gennadyd</a>
+            </div>
+            <div>
+              Email: <a className="text-green-400" href="mailto:gennady.davidov@gmail.com">gennady.davidov@gmail.com</a>
+            </div>
+          </div>
+        </section>
+
       </div>
+
     </div>
   );
 }
