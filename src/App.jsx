@@ -92,23 +92,30 @@ export default function DevopsTerminalPortfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-slate-200 font-mono flex justify-center px-6 py-12">
+    <div style={{
+      minHeight: "100vh",
+      background: "#0a0a0a",
+      color: "#e2e8f0",
+      fontFamily: "monospace",
+      display: "flex",
+      justifyContent: "center",
+      padding: "40px 20px"
+    }}>
 
-      <div className="w-full max-w-4xl">
+      <div style={{width:"100%",maxWidth:"900px"}}>
 
-        <header className="mb-12">
-          <h1 className="text-3xl text-green-400 font-bold">Gennady Davidov</h1>
-          <p className="mt-3 text-lg">
+        <header style={{marginBottom:40}}>
+          <h1 style={{color:"#4ade80",fontSize:32,fontWeight:"bold"}}>Gennady Davidov</h1>
+          <div style={{marginTop:10,fontSize:18}}>
             Senior DevOps / Platform Engineer
-          </p>
-          <p className="text-green-400 mt-2">
+          </div>
+          <div style={{color:"#4ade80",marginTop:6}}>
             Kubernetes • GitOps • CI/CD • Automation • Observability
-          </p>
+          </div>
         </header>
 
-
-        <section className="mb-10">
-          <h2 className="text-xl text-green-400 mb-3">About</h2>
+        <section style={{marginBottom:35}}>
+          <h2 style={{color:"#4ade80",marginBottom:10}}>About</h2>
           <p>
             Senior DevOps / Platform Engineer with 20+ years of experience in infrastructure,
             monitoring and DevOps engineering. Currently working at Intel (Habana Labs)
@@ -116,36 +123,42 @@ export default function DevopsTerminalPortfolio() {
           </p>
         </section>
 
-
-        <section className="mb-10">
-          <h2 className="text-xl text-green-400 mb-3">Skills</h2>
-          <ul className="space-y-1">
+        <section style={{marginBottom:35}}>
+          <h2 style={{color:"#4ade80",marginBottom:10}}>Skills</h2>
+          <ul style={{lineHeight:1.8}}>
             {skills.map((s) => (
               <li key={s}>• {s}</li>
             ))}
           </ul>
         </section>
 
+        <section style={{marginBottom:35}}>
+          <h2 style={{color:"#4ade80",marginBottom:15}}>Experience</h2>
 
-        <section className="mb-10">
-          <h2 className="text-xl text-green-400 mb-4">Experience</h2>
-
-          <div className="grid gap-5 md:grid-cols-2">
+          <div style={{display:"grid",gap:18,gridTemplateColumns:"repeat(auto-fit,minmax(320px,1fr))"}}>
 
           {experience.map((job) => (
-            <div key={job.company} className="rounded-xl border border-slate-800 bg-[#111827] p-5">
-              <div className="text-green-400 font-semibold">
+            <div key={job.company} style={{
+              background:"#111827",
+              border:"1px solid #1f2937",
+              borderRadius:10,
+              padding:18
+            }}>
+
+              <div style={{color:"#4ade80",fontWeight:"bold"}}>
                 {job.company}
               </div>
-              <div className="text-sm text-slate-400 mb-2">
+
+              <div style={{color:"#9ca3af",fontSize:14,marginBottom:10}}>
                 {job.role} ({job.period})
               </div>
 
-              <ul className="space-y-1 text-sm">
+              <ul style={{fontSize:14,lineHeight:1.7}}>
                 {job.points.map((p, i) => (
                   <li key={i}>• {p}</li>
                 ))}
               </ul>
+
             </div>
           ))}
 
@@ -153,30 +166,26 @@ export default function DevopsTerminalPortfolio() {
 
         </section>
 
-
-
-
-        <section className="mb-10">
-          <h2 className="text-xl text-green-400 mb-3">Blog</h2>
-          <ul className="space-y-1">
+        <section style={{marginBottom:35}}>
+          <h2 style={{color:"#4ade80",marginBottom:10}}>Blog</h2>
+          <ul style={{lineHeight:1.8}}>
             {blog.map((post) => (
               <li key={post}>• {post}</li>
             ))}
           </ul>
         </section>
 
-
         <section>
-          <h2 className="text-xl text-green-400 mb-3">Contact</h2>
-          <div className="space-y-1">
+          <h2 style={{color:"#4ade80",marginBottom:10}}>Contact</h2>
+          <div style={{lineHeight:1.8}}>
             <div>
-              LinkedIn: <a className="text-green-400" href="https://www.linkedin.com/in/gennadyd/">linkedin.com/in/gennadyd</a>
+              LinkedIn: <a style={{color:"#4ade80"}} href="https://www.linkedin.com/in/gennadyd/">linkedin.com/in/gennadyd</a>
             </div>
             <div>
-              GitHub: <a className="text-green-400" href="https://github.com/gennadyd">github.com/gennadyd</a>
+              GitHub: <a style={{color:"#4ade80"}} href="https://github.com/gennadyd">github.com/gennadyd</a>
             </div>
             <div>
-              Email: <a className="text-green-400" href="mailto:gennady.davidov@gmail.com">gennady.davidov@gmail.com</a>
+              Email: <a style={{color:"#4ade80"}} href="mailto:gennady.davidov@gmail.com">gennady.davidov@gmail.com</a>
             </div>
           </div>
         </section>
